@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import type { Meal } from "../../services/openAI/meal-generation/models/meal-openAI.model";
 import { mapMealToMealResponse } from "../mapper/generate-image-meal.mapper";
 import type { MealResponse } from "../../infra/cosmos/meals/response/meals-response.model";
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 interface CloudUploadProps {
     userId: string;
@@ -75,18 +75,12 @@ export default function UploadImage({ userId, dayOfTheWeek }: CloudUploadProps) 
 
     return (
         <Box sx={{ textAlign: "center", mt: 4 }}>
-            <UploadButton
-                onFileSelect={handleUpload}
-                error={!!error}
-                disabled={uploading}
-                placeholder="Click to upload an image"
-            />
             {uploading && (
                 <Box sx={{ mt: 2 }}>
                     <CircularProgress value={progress} sx={{ mt: 2 }} />
                 </Box>
             )}
-            {uploadedUrl && (
+            {uploadedUrl ? (
                 <Box
                     sx={{
                         mt: 2,
@@ -96,6 +90,14 @@ export default function UploadImage({ userId, dayOfTheWeek }: CloudUploadProps) 
                         gap: 2, // Add spacing between items
                     }}
                 >
+                    <Button
+                        onClick={handleMealGenerationByImage}
+                        disabled={isGenerationPending}
+                        variant="contained"
+                        endIcon={<AutoAwesomeIcon />}
+                    >
+                        Click to estimate meal
+                    </Button>
                     <img src={uploadedUrl} alt="Uploaded"
                         style={{
                             height: '250px',
@@ -107,16 +109,14 @@ export default function UploadImage({ userId, dayOfTheWeek }: CloudUploadProps) 
                     <a href={uploadedUrl} target="_blank" rel="noopener noreferrer">
                         {uploadedUrl}
                     </a> */}
-                    <Button
-                        onClick={handleMealGenerationByImage}
-                        disabled={isGenerationPending}
-                        variant="outlined"
-                        endIcon={<QuestionMarkIcon/>}
-                    >
-                        Estimate Calories
-                    </Button>
+
                 </Box>
-            )}
+            ) : (<UploadButton
+                onFileSelect={handleUpload}
+                error={!!error}
+                disabled={uploading}
+                placeholder="Click to upload an image"
+            />)}
 
 
             {error && (
