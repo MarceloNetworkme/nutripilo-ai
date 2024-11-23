@@ -3,7 +3,7 @@ import { OpenAIAPI } from "../../../infra/openAI/openAI-infra";
 import type { OpenAIResponse } from "../../../infra/openAI/response/content-response.model";
 import type { Message } from "../../../infra/openAI/response/content-request.model";
 import type { OpenAIMealResponse } from "./models/meal-openAI.model";
-import { systemMealsPrompt } from "./prompts/system.meals.prompts";
+import { systemMealsPrompt } from "./prompts/meal.prompts";
 import { mapMessagesToImageAnalysis } from "./mapper/image.mapper";
 import { systemImageMealsPrompt } from "./prompts/image.meal.prompts";
 
