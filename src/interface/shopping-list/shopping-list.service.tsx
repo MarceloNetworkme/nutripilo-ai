@@ -1,5 +1,5 @@
-import { MealResponse } from "../../infra/cosmos/meals/response/meals-response.model";
-import { ShoppingListItem } from "./shopping-list.model";
+import type { MealResponse } from "../../infra/cosmos/meals/response/meals-response.model";
+import type { ShoppingListItem } from "./shopping-list.model";
 
 export const parseQuantity = (quantityStr: string): { value: number; unit: string; isSpecial: boolean; fullText: string } => {
   // Handle special cases
@@ -13,7 +13,7 @@ export const parseQuantity = (quantityStr: string): { value: number; unit: strin
     const [, valueStr, unit, modifier] = complexMatch;
     const fullUnit = modifier ? `${unit} ${modifier}` : unit;
     return {
-      value: parseFloat(valueStr),
+      value: Number.parseFloat(valueStr),
       unit: fullUnit,
       isSpecial: true,
       fullText: quantityStr
@@ -25,7 +25,7 @@ export const parseQuantity = (quantityStr: string): { value: number; unit: strin
   if (simpleMatch) {
     const [, valueStr, unit = ''] = simpleMatch;
     return {
-      value: parseFloat(valueStr),
+      value: Number.parseFloat(valueStr),
       unit: unit,
       isSpecial: false,
       fullText: quantityStr

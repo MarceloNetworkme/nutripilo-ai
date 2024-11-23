@@ -6,6 +6,7 @@ import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Divider } from '@mui/material';
+import { useEffect } from 'react';
 
 const pages = [{ header: 'Meal planner', path: 'dashboard' }, { header: 'Shopping list', path: 'shopping-list' }];
 
@@ -13,7 +14,15 @@ function DesktopAppBar() {
     const navigate = useNavigate();
     const { id } = useParams();
     const location = useLocation(); // Get the current route location
-    
+	
+	useEffect(() => {
+		const userId = sessionStorage.getItem("userId")
+		if (userId && !location.pathname.includes('onboarding') && !location.pathname.includes('shopping-list')) {
+			navigate(`/dashboard/${userId}`);
+		}	
+	}, [location, navigate]);
+
+
     return (
         <>
             <AppBar position="static">
@@ -37,7 +46,7 @@ function DesktopAppBar() {
                                 {pages.map((page) => (
                                     <Grid item key={page.header}>
                                         <Button
-                                            variant="outlined"
+                                            variant={location.pathname.includes(page.path) ? 'contained' : 'outlined'}
                                             size="medium"
                                             color="primary"
                                             sx={{ mr: 2, width: 150 }}

@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { OpenAIAPI } from "../../../infra/openAI/openAI-infra";
 import type { OpenAIResponse } from "../../../infra/openAI/response/content-response.model";
 import type { Message } from "../../../infra/openAI/response/content-request.model";
-import type { Meal, OpenAIMealResponse } from "./models/meal-openAI.model";
+import type { OpenAIMealResponse } from "./models/meal-openAI.model";
 import { systemMealsPrompt } from "./prompts/system.meals.prompts";
 import { mapMessagesToImageAnalysis } from "./mapper/image.mapper";
 import { systemImageMealsPrompt } from "./prompts/image.meal.prompts";
@@ -26,10 +26,8 @@ function useMealGenerationOpenAI() {
 function useMealImageGenerationOpenAI() {
   const mutation = useMutation({
     mutationFn: async ({ imageUrl }: { imageUrl: string }) => {
-      const response: OpenAIResponse = await OpenAIAPI.getCompletion(mapMessagesToImageAnalysis(imageUrl), systemImageMealsPrompt.v1);
-      console.log(response.choices[0]?.message.content)
+      const response: OpenAIResponse = await OpenAIAPI.getCompletionImage(mapMessagesToImageAnalysis(imageUrl), systemImageMealsPrompt.v1);
       const parsedResponseContent: OpenAIMealResponse = JSON.parse(response.choices[0]?.message.content);
-      console.log("Parsed response content", parsedResponseContent);
       return parsedResponseContent.meals[0];
     },
   });

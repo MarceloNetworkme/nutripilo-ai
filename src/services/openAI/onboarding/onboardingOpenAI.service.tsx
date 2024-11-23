@@ -16,6 +16,7 @@ function useOnboardingOpenAI() {
       return parsedResponseContent;
     },
   });
+  console.log("useOnboardingOpenAI -> mutation", mutation.isPending);
   return mutation;
 };
 

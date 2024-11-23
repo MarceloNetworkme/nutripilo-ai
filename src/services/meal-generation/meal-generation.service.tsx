@@ -38,13 +38,9 @@ const useGenerateMeals = () => {
 
       try {
         const meals = await processMealOpenAI(userMessage);
-        console.log("Meals generated", meals);
         const mealsResponse = meals.map((meal) => mapMealToMealResponse(meal, userResponse.userId, "not_confirmed", week_day));
-        console.log("Meals to write", mealsResponse);
-        const result = await mealsMutateAsync(mealsResponse);
-        console.log("Meals created", result);
+        await mealsMutateAsync(mealsResponse);
       } catch (error) {
-        console.error("Error processing AI response:", error);
         toast.error("An error occurred while processing your request. Please try again.");
       }
     },

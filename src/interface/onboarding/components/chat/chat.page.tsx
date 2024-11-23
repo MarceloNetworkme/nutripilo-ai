@@ -2,13 +2,10 @@ import { Box, Paper, TextField, IconButton, CircularProgress, Typography, Stack,
 import SendIcon from "@mui/icons-material/Send";
 import { ChatStore } from "./chat.store";
 import { ChatService } from "./chat.service";
-import { OpenAIService } from "../../../../services/openAI/onboarding/onboardingOpenAI.service";
 
 export default function Chat() {
   const useSendMessage = ChatService.useSendMessage();
-  const { messages, input, setInput } = ChatStore.useChatStore();
-  const { isPending: isOpenAiPending } = OpenAIService.useOnboardingOpenAI();
-
+  const { messages, input, setInput, isPending} = ChatStore.useChatStore();
   return (
     <Box display="flex" flexDirection="column" maxWidth="md" marginLeft={0} p={2}>
       <Box flex={1} overflow="auto" mb={2} display="flex" flexDirection="column" gap={2}>
@@ -27,7 +24,7 @@ export default function Chat() {
             {!Array.isArray(message.content) && (<Typography>{message.content}</Typography>)}
           </Paper>
         ))}
-        {isOpenAiPending && (
+        {isPending && (
           <Box alignSelf="flex-start" p={2}>
             <CircularProgress size={24} />
           </Box>
@@ -42,8 +39,8 @@ export default function Chat() {
             fullWidth
             variant="outlined"
             size="small"
-            disabled={isOpenAiPending} />
-          <IconButton type="submit" color="primary" disabled={isOpenAiPending || !input.trim()}>
+            disabled={isPending} />
+          <IconButton type="submit" color="primary" disabled={isPending || !input.trim()}>
             <SendIcon />
           </IconButton>
         </Stack>

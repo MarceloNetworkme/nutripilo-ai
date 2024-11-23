@@ -29,12 +29,14 @@ export default function UploadImage({ userId, dayOfTheWeek }: CloudUploadProps) 
             if (!uploadedUrl) {
                 throw new Error("Uploaded URL is null");
             }
+            toast.loading("Interpreting image and generating meal...");
+
             const generatedMeal: Meal = await mutateAsync({ imageUrl: uploadedUrl });
             console.log("generatedMeal", generatedMeal)
             //call service to presist meal in DB
             const mealResponse: MealResponse[] = mapMealToMealResponse(generatedMeal, userId, 'confirmed', dayOfTheWeek);
             addMealMutateAsync(mealResponse);
-
+            toast.dismiss();
             toast.success("Meal generated and saved successfully!");
         } catch (error) {
             // toast with error

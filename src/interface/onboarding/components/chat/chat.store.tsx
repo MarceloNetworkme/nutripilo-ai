@@ -4,13 +4,15 @@ Constains all states of the chat component, and fn to modify it.
 In our case we have "input" and "messages" states.
 */
 import { create } from "zustand";
-import { Message } from "../../../../infra/openAI/response/content-request.model";
+import type { Message } from "../../../../infra/openAI/response/content-request.model";
 
 interface ChatStore {
   messages: Message[];
   addMessage: (chat: Message) => void;
   input: string;
   setInput: (input: string) => void;
+  isPending: boolean;
+  setIsPending: (isPending: boolean) => void;
 }
 
 const useChatStore = create<ChatStore>((set) => ({
@@ -18,6 +20,8 @@ const useChatStore = create<ChatStore>((set) => ({
   input: "",
   addMessage: (message: Message) => set((state) => ({ messages: [...state.messages, message] })),
   setInput: (input: string) => set({ input }),
+  isPending: false,
+  setIsPending: (isPending: boolean) => set({ isPending: isPending}),
 }));
 
 export const ChatStore = {

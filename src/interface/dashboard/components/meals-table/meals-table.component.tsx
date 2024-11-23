@@ -19,7 +19,6 @@ import {
 import type { Meal } from '../../../../services/openAI/meal-generation/models/meal-openAI.model';
 import { mealsCosmosService } from '../../../../services/cosmos/meals/meals.service';
 import { useParams } from 'react-router-dom';
-import { GridAddIcon } from '@mui/x-data-grid';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import DeleteIcon from '@mui/icons-material/Delete';

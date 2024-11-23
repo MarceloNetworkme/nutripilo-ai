@@ -14,6 +14,10 @@ export const AppRoute: React.FC = () => {
       element: <Layout />,
       children: [
         {
+          path: "",
+          element: <Onboarding />,
+        },
+        {
           path: "onboarding",
           element: <Onboarding />,
         },
