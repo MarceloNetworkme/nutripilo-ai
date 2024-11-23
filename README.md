@@ -85,6 +85,10 @@ Our current solution follows a simple yet powerful flow:
 
 Our vision for NutriPilot.AI extends far beyond its current capabilities. Here's what we're planning:
 
+### TBD 🎯 Smart Goal Adaptation
+- create costum AI models to improve macronutrients and callory based on image
+- Adapt dataset based on thousand of diferent foods(...)
+
 ### 🎯 Smart Goal Adaptation
 - **Dynamic Meal Recalculation**: When unplanned meals occur, automatically adjust future meals to keep users on track with their goals
 - **Enhanced Personalization**: Adapt meal generation based on:
