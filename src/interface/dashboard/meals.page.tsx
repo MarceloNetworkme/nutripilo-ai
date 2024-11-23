@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Grid, Tabs, Tab, Box } from "@mui/material";
+import { Grid, Tabs, Tab } from "@mui/material";
 import UserProgress from "./components/user-progress/user-progress.component";
 import MealsTable from "./components/meals-table/meals-table.component";
 import { capitalize } from "../../utils/capitalize.util";
@@ -7,7 +7,7 @@ import { daysOfWeek } from "../../utils/const.util";
 
 const MealsPage = () => {
     const [selectedDay, setSelectedDay] = useState(0);
-    const handleTabChange = (event: React.ChangeEvent<unknown>, newValue: number) => {
+    const handleTabChange = (_: React.ChangeEvent<unknown>, newValue: number) => {
         setSelectedDay(newValue);
     };
 
