@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import type { Meal } from "../../services/openAI/meal-generation/models/meal-openAI.model";
 import { mapMealToMealResponse } from "../mapper/generate-image-meal.mapper";
 import type { MealResponse } from "../../infra/cosmos/meals/response/meals-response.model";
-
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 interface CloudUploadProps {
     userId: string;
@@ -34,7 +34,7 @@ export default function UploadImage({ userId, dayOfTheWeek }: CloudUploadProps) 
             const generatedMeal: Meal = await mutateAsync({ imageUrl: uploadedUrl });
             console.log("generatedMeal", generatedMeal)
             //call service to presist meal in DB
-            const mealResponse: MealResponse[] = mapMealToMealResponse(generatedMeal, userId, 'confirmed', dayOfTheWeek);
+            const mealResponse: MealResponse[] = mapMealToMealResponse(generatedMeal, userId, 'confirmed', dayOfTheWeek, uploadedUrl);
             addMealMutateAsync(mealResponse);
             toast.dismiss();
             toast.success("Meal generated and saved successfully!");
@@ -75,18 +75,12 @@ export default function UploadImage({ userId, dayOfTheWeek }: CloudUploadProps) 
 
     return (
         <Box sx={{ textAlign: "center", mt: 4 }}>
-            <UploadButton
-                onFileSelect={handleUpload}
-                error={!!error}
-                disabled={uploading}
-                placeholder="Click to upload an image"
-            />
             {uploading && (
                 <Box sx={{ mt: 2 }}>
                     <CircularProgress value={progress} sx={{ mt: 2 }} />
                 </Box>
             )}
-            {uploadedUrl && (
+            {uploadedUrl ? (
                 <Box
                     sx={{
                         mt: 2,
@@ -96,20 +90,33 @@ export default function UploadImage({ userId, dayOfTheWeek }: CloudUploadProps) 
                         gap: 2, // Add spacing between items
                     }}
                 >
-                    <img src={uploadedUrl} alt="Uploaded" style={{ width: "100%", maxHeight: 250 }} />
-                    <Typography variant="body1">File uploaded successfully:</Typography>
-                    <a href={uploadedUrl} target="_blank" rel="noopener noreferrer">
-                        {uploadedUrl}
-                    </a>
                     <Button
                         onClick={handleMealGenerationByImage}
                         disabled={isGenerationPending}
-                        variant="outlined"
+                        variant="contained"
+                        endIcon={<AutoAwesomeIcon />}
                     >
-                        Estimate Calories
+                        Click to estimate meal
                     </Button>
+                    <img src={uploadedUrl} alt="Uploaded"
+                        style={{
+                            height: '250px',
+                            width: 'auto',
+                            display: 'block',
+                            margin: '0 auto'
+                        }} />
+                    {/* <Typography variant="body1">File uploaded successfully:</Typography>
+                    <a href={uploadedUrl} target="_blank" rel="noopener noreferrer">
+                        {uploadedUrl}
+                    </a> */}
+
                 </Box>
-            )}
+            ) : (<UploadButton
+                onFileSelect={handleUpload}
+                error={!!error}
+                disabled={uploading}
+                placeholder="Click to upload an image"
+            />)}
 
 
             {error && (

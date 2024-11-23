@@ -46,7 +46,6 @@ const useSendMessage = () => {
 
             for (const day of daysOfWeek.filter((day) => day !== "sunday")) {
                 toast.loading(`Generating meals for ${day}`);
-                await sleep(2000); // Wait for 2 seconds
                 await generateMeals(day, result);
                 toast.dismiss();
                 toast.success(`Meals for ${day} have been generated.`);

@@ -46,7 +46,7 @@ export default function Onboarding() {
         <Container maxWidth="md">
             <Box sx={{ my: 4 }}>
                 {/* Welcome Card */}
-                <Card sx={{ mb: 4, bgcolor: 'primary.main', color: 'white' }}>
+                <Card sx={{ mb: 1, bgcolor: 'primary.main', color: 'white' }}>
                     <CardContent>
                         <Box display="flex" alignItems="center" gap={2} mb={2}>
                             <ChatBubbleOutlineIcon fontSize="large" />
@@ -57,11 +57,14 @@ export default function Onboarding() {
                         <Typography variant="body1">
                             Let's create your personalized meal plan! Our AI assistant will guide you through a few questions about your goals and preferences. This will help us design the <strong>perfect nutrition plan for you</strong>.
                         </Typography>
+                        <Typography variant="body2" sx={{mt:2}}>
+                        <strong> Example:</strong> I'm Marcelo, a 28-year-old male, 180 cm tall and weighing 82 kg. My main goal is weight loss, and I currently follow a flexible dietary approach without specific restrictions. I prefer to have three main meals a day, typically breakfast, lunch and dinner.
+                        </Typography>
                     </CardContent>
                 </Card>
 
                 {/* Information Steps */}
-                <Box sx={{ mb: 4, bgcolor: 'background.paper', p: 3, borderRadius: 2 }}>
+                <Box sx={{ mb: 1, bgcolor: 'background.paper', p: 3, borderRadius: 2 }}>
                     <Typography variant="h6" sx={{ mb: 2, color: 'text.secondary' }}>
                         We'll ask you about:
                     </Typography>
@@ -81,7 +84,7 @@ export default function Onboarding() {
                         p: 3,
                         borderRadius: 2,
                         bgcolor: 'background.default',
-                        minHeight: '500px'
+                        minHeight: '200px'
                     }}
                 >
                     <Chat />

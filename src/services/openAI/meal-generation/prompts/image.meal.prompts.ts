@@ -43,46 +43,8 @@ Generate a recipe based on the provided image and user parameters, formatted exa
 };
 
 export const userImageMealsPrompt = {
-  v2: `I'm sharing a photo of my meal. This is for lunch.
+  v2: `I'm sharing a photo of my meal. Infer the meal type from the image, it can be Lunch, Breakfast, snack or Dinner
 
-Can you analyze this meal and provide the recipe in the specified JSON format?
+Can you analyze this meal and provide the recipe in the specified JSON format? Please be detailed about the portions and how you use that to estimate calories and macronutients accordingly
 IMPORTANT: You must ALWAYS respond in this JSON format otherwise I'll lose my job so please make sure it is really in JSON format.`
 };
-
-//To include in some place for user to know the guidelines!!
-export const photoGuidelines = {
-  v1: `
-PHOTO GUIDELINES FOR BEST RECIPE ANALYSIS
-
-1. Composition:
-   - Center the plate in the frame
-   - Include the entire plate/dish
-   - Show food from a 45-degree angle or directly above
-   - Include size reference (e.g., standard dinner plate, fork)
-
-2. Lighting:
-   - Use natural daylight when possible
-   - Avoid harsh shadows
-   - No flash photography
-   - Ensure food is well-lit and clearly visible
-
-3. Focus & Quality:
-   - Ensure image is sharp and in focus
-   - Minimum resolution: 1024x768 pixels
-   - Keep the phone/camera steady
-   - Clean lens before taking photo
-
-4. Background & Context:
-   - Use a clean, uncluttered background
-   - Include garnishes and side items
-   - Show any sauces or condiments
-   - Place food on a contrasting surface
-
-5. Portion Visibility:
-   - Show the depth of food items
-   - Include multiple components separately
-   - Don't stack or overlay foods
-   - Show any layers or internal structure
-
-These guidelines will help our AI provide more accurate recipes and nutritional estimates for your meals.
-`};

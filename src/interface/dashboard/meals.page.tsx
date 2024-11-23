@@ -7,13 +7,17 @@ import { daysOfWeek } from "../../utils/const.util";
 
 const MealsPage = () => {
     const [selectedDay, setSelectedDay] = useState(0);
-    const handleTabChange = (event: React.ChangeEvent<unknown>, newValue: number) => {
+    const handleTabChange = (_: React.ChangeEvent<unknown>, newValue: number) => {
         setSelectedDay(newValue);
     };
 
     return (
-        <Grid container spacing={2} padding={2}>
-            {/* Tabs for days of the week */}
+        <Grid container spacing={2} padding={2} justifyContent="center" sx={{
+            maxWidth: '1200px',
+            width: '100%',
+            margin: '0 auto',
+        }}>
+
             <Grid item xs={12}>
                 <Tabs
                     value={selectedDay}
@@ -29,10 +33,10 @@ const MealsPage = () => {
             </Grid>
 
             <Grid item xs={12}>
-                <UserProgress selectedDay={daysOfWeek[selectedDay]}/>
+                <UserProgress selectedDay={daysOfWeek[selectedDay]} />
             </Grid>
             <Grid item xs={12}>
-                <MealsTable selectedDay={daysOfWeek[selectedDay]}/>
+                <MealsTable selectedDay={daysOfWeek[selectedDay]} />
             </Grid>
         </Grid>
     );

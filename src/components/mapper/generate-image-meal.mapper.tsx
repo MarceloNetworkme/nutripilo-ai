@@ -1,17 +1,20 @@
-import { MealResponse } from "../../infra/cosmos/meals/response/meals-response.model";
-import { Meal } from "../../services/openAI/meal-generation/models/meal-openAI.model";
+import type { MealResponse } from "../../infra/cosmos/meals/response/meals-response.model";
+import type { Meal } from "../../services/openAI/meal-generation/models/meal-openAI.model";
 
 // Maps from OpenAI Meal to MealResponse
 export const mapMealToMealResponse = (
   meal: Meal,
   userId: string,
-  status: string = 'active',
-  dayOfWeek: string = ''
+  status: string,
+  dayOfWeek: string,
+  imgURL: string
 ): MealResponse[] => {
   return [{
     id: '', // This will be set by the backend
     userId,
     status,
+    imgURL, // This will be set by the backend
+    type: 'captured',
     day_of_week: dayOfWeek,
     title: meal.title,
     time_to_prepare: meal.time_to_prepare,

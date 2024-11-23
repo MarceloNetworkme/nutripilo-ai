@@ -33,7 +33,7 @@ Example response:
   }
 }
 
-Rules: Ask friendly and clear questions, store follow Up Question in "followUpQuestion", store answers in "data", set "completed" as "true" when all data is filled, validate formats.
+Rules: Ask friendly and clear questions, feel free to join up to 3 questions of the same category and give examples if necessary, in a single followup question, store follow Up Question in "followUpQuestion", store answers in "data", set "completed" as "true" when all data is filled, validate formats.
 `,
 };
 

@@ -78,7 +78,7 @@ const MealsTable: React.FC<MealsTableProps> = ({ selectedDay }) => {
                                     <TableCell>Calories</TableCell>
                                     <TableCell>Status</TableCell>
                                     <TableCell>Preparation Time (min)</TableCell>
-                                    <TableCell>Actions</TableCell>
+                                    <TableCell align='right'>Actions</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -91,43 +91,51 @@ const MealsTable: React.FC<MealsTableProps> = ({ selectedDay }) => {
                                             <Chip
                                                 label={meal.status}
                                                 variant='soft'
-                                                icon={meal.status === 'confirmed' ? <CheckIcon/> : <CloseIcon/>}
+                                                icon={meal.status === 'confirmed' ? <CheckIcon /> : <CloseIcon />}
                                                 color={
                                                     meal.status === 'confirmed' ? 'success' : 'default'
                                                 }
                                             /></TableCell>
                                         <TableCell>{meal.time_to_prepare}</TableCell>
-                                        <TableCell width={350}>
-                                            <Button
-                                                variant="contained"
-                                                color="success"
-                                                onClick={() => handleUpdateMealStatus(meal.id)}
-                                                endIcon={<CheckIcon/>}
-                                                size='small'
-                                                sx={{ mr: 1 }}
+                                        <TableCell width={350} align="right">
+                                            <Box
+                                                sx={{
+                                                    display: 'flex', // Flexbox layout for consistent spacing
+                                                    justifyContent: 'flex-end', // Align items to the right
+                                                    gap: 1, // Space between buttons
+                                                }}
                                             >
-                                                Confirm
-                                            </Button>
-                                            <Button
-                                                variant="contained"
-                                                color="error"
-                                                onClick={() => handleDeleteMeal(meal.id)}
-                                                sx={{ mr: 1 }}
-                                                size='small'
-                                                endIcon={<DeleteIcon/>}
-                                            >
-                                                Remove
-                                            </Button>
-                                            <Button
-                                                variant="outlined"
-                                                onClick={() => handleOpenDrawer(meal)}
-                                                sx={{ mr: 1 }}
-                                                size='small'
-                                                endIcon={<VisibilityIcon/>}
-                                            >
-                                                View
-                                            </Button>
+                                                {meal.status !== 'confirmed' && (
+                                                    <Button
+                                                        variant="contained"
+                                                        color="success"
+                                                        onClick={() => handleUpdateMealStatus(meal.id)}
+                                                        endIcon={<CheckIcon />}
+                                                        size="small"
+                                                    >
+                                                        Confirm
+                                                    </Button>
+                                                )}
+                                                <Button
+                                                    variant="contained"
+                                                    color="error"
+                                                    onClick={() => handleDeleteMeal(meal.id)}
+                                                    size="small"
+                                                    endIcon={<DeleteIcon />}
+                                                >
+                                                    Remove
+                                                </Button>
+                                                <Button
+                                                    variant="outlined"
+                                                    onClick={() => handleOpenDrawer(meal)}
+                                                    size="small"
+                                                    endIcon={<VisibilityIcon />}
+                                                >
+                                                    View
+                                                </Button>
+                                            </Box>
                                         </TableCell>
+
                                     </TableRow>
                                 ))}
                             </TableBody>
@@ -135,7 +143,6 @@ const MealsTable: React.FC<MealsTableProps> = ({ selectedDay }) => {
                     </TableContainer>
                 </CardContent>
             </Card>
-
             <Drawer
                 anchor="right"
                 open={!!selectedMeal}
@@ -158,10 +165,21 @@ const MealsTable: React.FC<MealsTableProps> = ({ selectedDay }) => {
                                     </li>
                                 ))}
                             </ul>
-                            <Typography variant="subtitle1">Instructions:</Typography>
-                            <Typography variant="body2" paragraph>
-                                {selectedMeal.instructions}
-                            </Typography>
+                            {selectedMeal.type === 'generated' && (<>
+                                <Typography variant="subtitle1">Instructions:</Typography>
+                                <Typography variant="body2" paragraph>
+                                    {selectedMeal.instructions}
+                                </Typography></>)}
+                            {selectedMeal.type === 'captured' && (<>
+                                <Typography variant="subtitle1">Meal photo</Typography>
+                                <img src={selectedMeal.imgURL} alt="Uploaded"
+                                    style={{
+                                        height: '250px',
+                                        width: 'auto',
+                                        display: 'block',
+                                        margin: '10px',
+                                    }} /></>)}
+
                             <Typography variant="subtitle1">Macronutrients:</Typography>
                             <Typography variant="body2">
                                 Calories: {selectedMeal.macronutrients.calories} kcal
