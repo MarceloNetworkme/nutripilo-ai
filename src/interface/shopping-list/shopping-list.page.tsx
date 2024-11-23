@@ -1,5 +1,19 @@
 import { useMemo } from 'react';
-import { Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Chip, Box, CircularProgress, Alert } from '@mui/material';
+import {
+  Container,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Chip,
+  Box,
+  CircularProgress,
+  Alert,
+  Grid,
+} from '@mui/material';
 import { mealsCosmosService } from '../../services/cosmos/meals/meals.service';
 import { useParams } from 'react-router-dom';
 import { generateShoppingList } from './shopping-list.service';
@@ -28,7 +42,12 @@ const ShoppingList: React.FC = () => {
   }
 
   return (
-    <Container sx={{ mt: 2 }}>
+    <Grid container spacing={2} padding={2} justifyContent="center" sx={{
+      maxWidth: '1200px',
+      width: '100%',
+      margin: '0 auto',
+      mt:2
+    }}>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -43,19 +62,14 @@ const ShoppingList: React.FC = () => {
               <TableRow
                 key={item.name}
                 sx={{
-                  '&:hover': { bgcolor: 'action.hover' }
+                  '&:hover': { bgcolor: 'action.hover' },
                 }}
               >
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.quantity}</TableCell>
                 <TableCell>
                   {item.meals.map((meal) => (
-                    <Chip
-                      key={meal}
-                      label={meal}
-                      size="small"
-                      sx={{ m: 0.5 }}
-                    />
+                    <Chip key={meal} label={meal} size="small" sx={{ m: 0.5 }} />
                   ))}
                 </TableCell>
               </TableRow>
@@ -63,7 +77,7 @@ const ShoppingList: React.FC = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </Container>
+    </Grid>
   );
 };
 

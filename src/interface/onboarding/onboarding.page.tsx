@@ -46,7 +46,7 @@ export default function Onboarding() {
         <Container maxWidth="md">
             <Box sx={{ my: 4 }}>
                 {/* Welcome Card */}
-                <Card sx={{ mb: 4, bgcolor: 'primary.main', color: 'white' }}>
+                <Card sx={{ mb: 1, bgcolor: 'primary.main', color: 'white' }}>
                     <CardContent>
                         <Box display="flex" alignItems="center" gap={2} mb={2}>
                             <ChatBubbleOutlineIcon fontSize="large" />
@@ -57,11 +57,14 @@ export default function Onboarding() {
                         <Typography variant="body1">
                             Let's create your personalized meal plan! Our AI assistant will guide you through a few questions about your goals and preferences. This will help us design the <strong>perfect nutrition plan for you</strong>.
                         </Typography>
+                        <Typography variant="body2" sx={{mt:2}}>
+                        <strong> Example:</strong> I'm Marcelo, a 28-year-old male who is 180cm tall and weighs 82kg. I'm following a no preferences and my main goal is weight loss. I prefer to have two meals a day: breakfast, lunch, and dinner.
+                        </Typography>
                     </CardContent>
                 </Card>
 
                 {/* Information Steps */}
-                <Box sx={{ mb: 4, bgcolor: 'background.paper', p: 3, borderRadius: 2 }}>
+                <Box sx={{ mb: 1, bgcolor: 'background.paper', p: 3, borderRadius: 2 }}>
                     <Typography variant="h6" sx={{ mb: 2, color: 'text.secondary' }}>
                         We'll ask you about:
                     </Typography>
@@ -81,7 +84,7 @@ export default function Onboarding() {
                         p: 3,
                         borderRadius: 2,
                         bgcolor: 'background.default',
-                        minHeight: '500px'
+                        minHeight: '200px'
                     }}
                 >
                     <Chat />
