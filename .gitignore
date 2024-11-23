@@ -11,6 +11,3 @@ dist/
 .vscode/*
 !.vscode/extensions.json
 .idea
-
-src/infra/configs/cosmos.config.tsx
-src/infra/configs/openAI.config.tsx
