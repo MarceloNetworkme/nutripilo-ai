@@ -42,7 +42,7 @@ function DesktopAppBar() {
                         </Grid>
 
                         <Grid item xs={9}>
-                            {!location.pathname.includes('onboarding') && (<Grid container justifyContent="flex-end">
+                            {(location.pathname.includes('dashboard') || location.pathname.includes('shopping-list'))&& (<Grid container justifyContent="flex-end">
                                 {pages.map((page) => (
                                     <Grid item key={page.header}>
                                         <Button
