@@ -58,7 +58,7 @@ export default function Onboarding() {
                             Let's create your personalized meal plan! Our AI assistant will guide you through a few questions about your goals and preferences. This will help us design the <strong>perfect nutrition plan for you</strong>.
                         </Typography>
                         <Typography variant="body2" sx={{mt:2}}>
-                        <strong> Example:</strong> I'm Marcelo, a 28-year-old male who is 180cm tall and weighs 82kg. I'm following a no preferences and my main goal is weight loss. I prefer to have two meals a day: breakfast, lunch, and dinner.
+                        <strong> Example:</strong> I'm Marcelo, a 28-year-old male, 180 cm tall and weighing 82 kg. My main goal is weight loss, and I currently follow a flexible dietary approach without specific restrictions. I prefer to have three main meals a day, typically breakfast, lunch and dinner.
                         </Typography>
                     </CardContent>
                 </Card>

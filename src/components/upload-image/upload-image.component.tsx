@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import type { Meal } from "../../services/openAI/meal-generation/models/meal-openAI.model";
 import { mapMealToMealResponse } from "../mapper/generate-image-meal.mapper";
 import type { MealResponse } from "../../infra/cosmos/meals/response/meals-response.model";
-
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 interface CloudUploadProps {
     userId: string;
@@ -34,7 +34,7 @@ export default function UploadImage({ userId, dayOfTheWeek }: CloudUploadProps) 
             const generatedMeal: Meal = await mutateAsync({ imageUrl: uploadedUrl });
             console.log("generatedMeal", generatedMeal)
             //call service to presist meal in DB
-            const mealResponse: MealResponse[] = mapMealToMealResponse(generatedMeal, userId, 'confirmed', dayOfTheWeek);
+            const mealResponse: MealResponse[] = mapMealToMealResponse(generatedMeal, userId, 'confirmed', dayOfTheWeek, uploadedUrl);
             addMealMutateAsync(mealResponse);
             toast.dismiss();
             toast.success("Meal generated and saved successfully!");
@@ -96,15 +96,22 @@ export default function UploadImage({ userId, dayOfTheWeek }: CloudUploadProps) 
                         gap: 2, // Add spacing between items
                     }}
                 >
-                    <img src={uploadedUrl} alt="Uploaded" style={{ width: "100%", maxHeight: 250 }} />
-                    <Typography variant="body1">File uploaded successfully:</Typography>
+                    <img src={uploadedUrl} alt="Uploaded"
+                        style={{
+                            height: '250px',
+                            width: 'auto',
+                            display: 'block',
+                            margin: '0 auto'
+                        }} />
+                    {/* <Typography variant="body1">File uploaded successfully:</Typography>
                     <a href={uploadedUrl} target="_blank" rel="noopener noreferrer">
                         {uploadedUrl}
-                    </a>
+                    </a> */}
                     <Button
                         onClick={handleMealGenerationByImage}
                         disabled={isGenerationPending}
                         variant="outlined"
+                        endIcon={<QuestionMarkIcon/>}
                     >
                         Estimate Calories
                     </Button>

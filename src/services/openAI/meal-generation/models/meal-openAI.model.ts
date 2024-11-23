@@ -7,6 +7,8 @@ export interface OpenAIMealResponse {
 export interface Meal {
     ingredients: Ingredient[];
     title: string;
+    type: "generated" | "captured";
+    imgURL?: string;
     time_to_prepare: number;
     description: string;
     instructions: string;

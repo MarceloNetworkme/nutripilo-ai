@@ -3,6 +3,8 @@ export interface MealResponse {
   ingredients: IngredientResponse[];
   title: string;
   userId: string;
+  type: 'generated' | 'captured';
+  imgURL?: string;
   status: string;
   day_of_week: string;
   time_to_prepare: number;

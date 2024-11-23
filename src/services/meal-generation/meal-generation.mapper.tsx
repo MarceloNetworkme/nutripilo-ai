@@ -14,6 +14,8 @@ export function mapMealToMealResponse(
     userId,
     status,
     day_of_week,
+    type: "generated",
+    imgURL:"",
     title: meal.title,
     time_to_prepare: meal.time_to_prepare,
     description: meal.description,
