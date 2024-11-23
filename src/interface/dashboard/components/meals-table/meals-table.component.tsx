@@ -78,7 +78,7 @@ const MealsTable: React.FC<MealsTableProps> = ({ selectedDay }) => {
                                     <TableCell>Calories</TableCell>
                                     <TableCell>Status</TableCell>
                                     <TableCell>Preparation Time (min)</TableCell>
-                                    <TableCell>Actions</TableCell>
+                                    <TableCell  align='right'>Actions</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -97,8 +97,8 @@ const MealsTable: React.FC<MealsTableProps> = ({ selectedDay }) => {
                                                 }
                                             /></TableCell>
                                         <TableCell>{meal.time_to_prepare}</TableCell>
-                                        <TableCell width={350}>
-                                            <Button
+                                        <TableCell width={350} align='right'>
+                                            {meal.status !== 'confirmed' && (<Button
                                                 variant="contained"
                                                 color="success"
                                                 onClick={() => handleUpdateMealStatus(meal.id)}
@@ -107,7 +107,7 @@ const MealsTable: React.FC<MealsTableProps> = ({ selectedDay }) => {
                                                 sx={{ mr: 1 }}
                                             >
                                                 Confirm
-                                            </Button>
+                                            </Button>)}
                                             <Button
                                                 variant="contained"
                                                 color="error"
