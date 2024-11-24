@@ -230,4 +230,4 @@ We are using azure for the project presented, our solution follows the following
 
 **[João Martinho Marques](https://www.linkedin.com/in/joao-marques95/)** - Backend Developer in telecom industry
 
-**[Marcelo Mendes](https://www.linkedin.com/in/marcelomanteigas/)** - Co-Founder & CTO at Networkme
+**[Marcelo Manteigas](https://www.linkedin.com/in/marcelomanteigas/)** - Co-Founder & CTO at Networkme
