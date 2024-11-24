@@ -1,8 +1,5 @@
 import { BlobServiceClient, type ContainerClient } from "@azure/storage-blob";
-
-const containerName = "default";
-const sasToken = "sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-11-22T21:05:01Z&st=2024-11-22T13:05:01Z&spr=https&sig=IPtgCElR57gnkW73zjiA9oDZh4zQDMXsfdTsBWTWzao%3D";
-const storageAccountName = 'nutripilot';
+import { BlobStorageConfigs } from "../configs/blob-storage.config";
 
 interface UploadFileResult {
   success: boolean;
@@ -56,9 +53,9 @@ const uploadFile = async ({ file, containerCustomName = "", userName, useRandomS
 
   const filePath = `${containerPath ? `${containerPath}/` : ""}${useRandomString ? `${fileName}_${randomString}` : file.name}${getExtension(file)}`;
   // get BlobService = notice `?` is pulled out of sasToken - if created in Azure portal
-  const blobService = new BlobServiceClient(`https://${storageAccountName}.blob.core.windows.net/?${sasToken}`);
+  const blobService = new BlobServiceClient(`https://${BlobStorageConfigs.storageAccountName}.blob.core.windows.net/?${BlobStorageConfigs.sasToken}`);
 
-  containerCustomName = containerCustomName || containerName;
+  containerCustomName = containerCustomName || BlobStorageConfigs.containerName;
   // get Container - full public read access
   const containerClient = blobService.getContainerClient(containerCustomName);
 
@@ -72,7 +69,7 @@ const uploadFile = async ({ file, containerCustomName = "", userName, useRandomS
   // upload file
   try {
     await createBlobInContainer(containerClient, file, filePath, setProgress);
-    const imageUrl = `https://${storageAccountName}.blob.core.windows.net/${containerCustomName}/${filePath}`;
+    const imageUrl = `https://${BlobStorageConfigs.storageAccountName}.blob.core.windows.net/${containerCustomName}/${filePath}`;
     return {
       success: true,
       imageUrl,
