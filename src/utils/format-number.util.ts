@@ -28,7 +28,7 @@ export function fCurrency(number: InputValue) {
 }
 
 export function fPercent(number: InputValue) {
-  if (number == 0) return "0%";
+  if (number === 0) return "0%";
 
   const format = number ? numeral(Number(number) / 100).format("0.0%") : "";
 

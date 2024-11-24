@@ -10,7 +10,8 @@ import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/s
 import type { Mode } from "@mui/system/cssVars/useCurrentColorScheme";
 import { createTheme } from "./create-theme.util";
 import { ThemeService } from "./theme.service";
-import { useTranslate } from "../locales/use-locales.util";
+import { enUS as enUSDataGrid} from "@mui/x-data-grid/locales";
+import { enUS as enUSDate} from "@mui/x-date-pickers/locales";
 
 // ----------------------------------------------------------------------
 
@@ -20,7 +21,16 @@ type Props = {
 };
 
 export function ThemeProvider({ children, themeDefaultType = "light" }: Props) {
-  const { currentLang } = useTranslate();
+  const currentLang =   {
+    value: "en",
+    label: "English",
+    countryCode: "GB",
+    adapterLocale: "en",
+    numberFormat: { code: "en-US", currency: "USD" },
+    systemValue: {
+      components: { ...enUSDate.components, ...enUSDataGrid.components },
+    },
+  }
 
   const themeStore = ThemeService.useStore();
 

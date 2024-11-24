@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Grid, Tabs, Tab } from "@mui/material";
+import { Grid, Tabs, Tab, useMediaQuery } from "@mui/material";
 import UserProgress from "./components/user-progress/user-progress.component";
 import MealsTable from "./components/meals-table/meals-table.component";
 import { capitalize } from "../../utils/capitalize.util";
@@ -10,9 +10,10 @@ const MealsPage = () => {
     const handleTabChange = (_: React.ChangeEvent<unknown>, newValue: number) => {
         setSelectedDay(newValue);
     };
+    const isMobile = useMediaQuery("(max-width:600px)");
 
     return (
-        <Grid container spacing={2} padding={2} justifyContent="center" sx={{
+        <Grid container spacing={2} padding={isMobile? 0.5 : 2} justifyContent="center" sx={{
             maxWidth: '1200px',
             width: '100%',
             margin: '0 auto',
