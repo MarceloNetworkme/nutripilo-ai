@@ -71,7 +71,10 @@ Our current solution follows a simple yet powerful flow:
    - View dynamically generated weekly shopping requirements
    - List updates based on unconfirmed meals
 
-{{TBD: Put here a video of our demo}}
+
+# 🎥 Product Demo
+
+[![Product Demo](https://img.shields.io/badge/Watch%20Demo-Vimeo-1AB7EA)](https://vimeo.com/1032781621/8d431f74ed?share=copy)
 
 ## 🗺️ Roadmap
 
@@ -203,7 +206,7 @@ While FitnessPal offers basic features like meal tracking and macro goals, Nutri
 ### Cloud Arquiteture
 We are using azure for the project presented, our solution follows the following guidelines.
 
-<div style="height: 400px; overflow: hidden">
+<div style="height: 350px; width: auto; overflow: hidden">
   <img src="./src/utils/nutripil.ai_cloud_architecture.png" style="margin-top: -60px;" alt="NutriPilot Logo">
 </div>
 
