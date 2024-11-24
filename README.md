@@ -4,23 +4,6 @@ Your AI-powered diet companion that helps you plan, shop, and track your nutriti
 
 ![NutriPilot Logo](https://nutripilot.blob.core.windows.net/logo/NutriPilotLogo.png)
 
-## 🎯 Value Proposition
-
-NutriPilot.AI is your AI-powered companion designed to take the hassle out of diet management. 
-
-By providing personalized meal plans, guiding your shopping, and tracking your calorie and macronutrient intake, NutriPilot.AI simplifies the process, saving you time and energy while helping you stay consistent and confidently achieve your dietary goals. 
-
-When you can’t meet your plan, NutriPilot.AI provides you a easy way to resync unplanned meals, and recalculate your plan.
-
-NutriPilot.AI takes the hassle out of diet management by serving as your intelligent nutrition companion. Our platform provides:
-
-- Personalized meal planning
-- Smart shopping guidance
-- Precise calorie and macronutrient tracking
-- Flexible meal plan adjustments
-
-When life happens and you can't stick to your plan, NutriPilot.AI helps you easily resync unplanned meals and recalculate your nutrition goals.
-
 ## 🤔 The Problem
 
 Maintaining a consistent diet aligned with specific health or fitness goals is challenging:
@@ -33,12 +16,20 @@ These challenges often lead to diminished motivation and reduced chances of achi
 
 ## 💡 Our Solution
 
-NutriPilot.AI streamlines your entire diet management process through:
+NutriPilot.AI is your AI-powered companion designed to take the hassle out of diet management. 
+
+By providing personalized meal plans, guiding your shopping, and tracking your calorie and macronutrient intake, NutriPilot.AI simplifies the process, saving you time and energy while helping you stay consistent and confidently achieve your dietary goals. 
+
+When you can’t meet your plan, NutriPilot.AI provides you a easy way to resync unplanned meals, and recalculate your plan.
+
+NutriPilot.AI takes the hassle out of diet management by serving as your intelligent nutrition companion. Our platform provides:
 
 1. **Smart Meal Planning**: AI-generated, personalized meal plans
 2. **Automated Shopping**: Dynamic grocery lists based on your meal plan
 3. **Effortless Tracking**: Real-time calorie and macronutrient monitoring
 4. **Flexible Adjustments**: Easy resyncing of unplanned meals
+
+When life happens and you can't stick to your plan, NutriPilot.AI helps you easily resync unplanned meals and recalculate your nutrition goals.
 
 ## 🔄 How It Works
 
@@ -53,6 +44,7 @@ Our current solution follows a simple yet powerful flow:
    - AI-generated weekly meal plans
    - Goal tracking and progress monitoring
    - Automated shopping lists
+   - Easy re-sync of unplaned meals
 
 ## 🚀 Quick Start Guide
 
@@ -85,9 +77,24 @@ Our current solution follows a simple yet powerful flow:
 
 Our vision for NutriPilot.AI extends far beyond its current capabilities. Here's what we're planning:
 
-### TBD 🎯 Smart Goal Adaptation
-- create costum AI models to improve macronutrients and callory based on image
-- Adapt dataset based on thousand of diferent foods(...)
+### 🔬 Technical Enhancements
+
+1. **Custom Vision Models**
+   - Advanced food recognition capabilities
+   - Precise macro-nutrient calculation from images
+   - Multiple food items detection in single image
+
+2. **Data Enhancement**
+   - Expanding food database with thousands of items
+   - Continuous learning from user interactions
+   - Regional food recognition
+
+### Expected Outcomes ✨
+- More accurate nutrition tracking
+- Faster meal logging
+- Better user experience
+- Improved personalization
+
 
 ### 🎯 Smart Goal Adaptation
 - **Dynamic Meal Recalculation**: When unplanned meals occur, automatically adjust future meals to keep users on track with their goals
@@ -121,22 +128,75 @@ Our vision for NutriPilot.AI extends far beyond its current capabilities. Here's
   - Waste reduction
   - Pantry optimization
 
-TBD: Market Opportunity
-TBD: 7.  Go-To-Market Strategy — Marcelo
-TBD: Buisness Model
-TDB: Competitive Landscape (only with myfitnesspalm & key higlights)
-TBD: Team (just me and Marcelo)
+
+## 💰 Business Model
+
+### Subscription-Based Core
+We plan to operate on a subscription model with tiered pricing to provide value across different user needs.
+
+### Additional Revenue Streams
+
+| Stream | Description |
+|--------|-------------|
+| Expert Consultations | One-on-one sessions with specialized dietitians for custom meal plans |
+| Nutrition Kits | Branded equipment including portion control tools and kitchen scales |
+| Retail Integration | Partnerships with grocery delivery services for seamless shopping |
+| Smart Advertising | Non-intrusive ads in free tier, removable with paid subscriptions |
+| Brand Collaborations | Revenue sharing with recommended food and supplement brands |
+
+Our multi-stream approach ensures sustainable growth while maintaining focus on user value and experience.
+
 ## 🎯 Go-To-Market Strategy
-1. **Initial Phase: B2B2C**
-   - Partner with gyms as early adopters
-   - Build credibility in the fitness community
-   - Gather valuable user feedback
+
+### Our Approach
+NutriPilot.AI targets health-conscious individuals through strategic gym partnerships, transforming how nutrition guidance is delivered in fitness centers.
+
+### Two-Phase Strategy
+
+#### 1. Initial B2B2C Launch 🚀
+- **Market**: Portuguese fitness centers
+- **Key Partners**: Established chains (Fitness Hut)
+- **Model**: Integration with gym memberships
+- **Goal**: Build credibility and gather user feedback
+
+#### 2. B2C Expansion 📈
+- Leverage gym success stories
+- Scale to direct consumer market
+- Continuous product improvement
+- Expanded feature offerings
    
-2. **Expansion: B2C Market**
-   - Leverage established reputation
-   - Scale user base
-   - Implement continuous improvements based on user interaction
-   - Expand marketing channels
+
+## 📊 Market Opportunity
+
+### Market Overview
+- **Global Diet & Nutrition Industry**: $430 billion
+- **Our Target Market**: $22 billion
+  - Diet Management Services
+  - Personalized Nutrition
+  - Wellness Apps
+- **Similar Apps Market**: $315 million
+
+### Growth Potential
+- Industry expected to reach $850 billion by 2034
+- Our segment projected to grow 350% by 2032
+
+## 🔍 Competitor Analysis
+
+| Core Features | NutriPilot.AI | FitnessPal |
+|--------------|---------------|-------------|
+| Shopping List Generation | ✅ | ❌ |
+| Meal Tracking | ✅ | ✅ |
+| AI-Based Meal Suggestions | ✅ | ❌ |
+| User Macro Goals | ✅ | ✅ |
+| Easy Resync of Unplanned Meals | ✅ | ❌ |
+
+### Our Edge ⭐
+
+While FitnessPal offers basic features like meal tracking and macro goals, NutriPilot.AI provides a more comprehensive solution:
+
+- **AI-Powered Planning**: Automated meal suggestions vs. manual planning
+- **Shopping Support**: Integrated list generation that FitnessPal lacks
+- **Smart Features**: Easy meal resyncing capabilities
 
 ## 🏗️ Technical Architecture
 
@@ -160,3 +220,11 @@ We are using azure for the project presented, our solution follows the following
 ├── Interface/      # Application pages
 └── Utils/         # Helper functions and UI theming
 ```
+
+## 👥 Our Team
+
+### Byte Chefs
+
+**[João Martinho Marques](https://www.linkedin.com/in/joao-marques95/)** - Backend Developer in telecom industry
+
+**[Marcelo Mendes](https://www.linkedin.com/in/marcelomanteigas/)** - Co-Founder & CTO at Networkme
