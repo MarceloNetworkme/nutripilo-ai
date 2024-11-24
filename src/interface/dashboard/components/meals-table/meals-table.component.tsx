@@ -15,6 +15,8 @@ import {
     Box,
     Chip,
     Grid,
+    useMediaQuery,
+    IconButton,
 } from '@mui/material';
 import type { Meal } from '../../../../services/openAI/meal-generation/models/meal-openAI.model';
 import { mealsCosmosService } from '../../../../services/cosmos/meals/meals.service';
@@ -31,6 +33,7 @@ interface MealsTableProps {
 
 const MealsTable: React.FC<MealsTableProps> = ({ selectedDay }) => {
     const { id: userId } = useParams();
+    const isMobile = useMediaQuery("(max-width:600px)");
 
     const { data: mealsData, isFetching } = mealsCosmosService.useGetUserMeals(userId || "");
 
@@ -148,7 +151,24 @@ const MealsTable: React.FC<MealsTableProps> = ({ selectedDay }) => {
                 open={!!selectedMeal}
                 onClose={handleCloseDrawer}
             >
-                <Box p={3} width={400}>
+                <Box
+                    p={3}
+                    width={isMobile ? "100vw" : 400} // Full width for mobile, fixed width otherwise
+                    position="relative" // To position the close button
+                >
+                    {isMobile && (
+                        <IconButton
+                            onClick={handleCloseDrawer}
+                            style={{
+                                position: "absolute",
+                                top: 8,
+                                right: 8,
+                                zIndex: 10, // Ensure it stays above other content
+                            }}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    )}
                     {selectedMeal && (
                         <>
                             <Typography variant="h6" gutterBottom>
@@ -165,20 +185,29 @@ const MealsTable: React.FC<MealsTableProps> = ({ selectedDay }) => {
                                     </li>
                                 ))}
                             </ul>
-                            {selectedMeal.type === 'generated' && (<>
-                                <Typography variant="subtitle1">Instructions:</Typography>
-                                <Typography variant="body2" paragraph>
-                                    {selectedMeal.instructions}
-                                </Typography></>)}
-                            {selectedMeal.type === 'captured' && (<>
-                                <Typography variant="subtitle1">Meal photo</Typography>
-                                <img src={selectedMeal.imgURL} alt="Uploaded"
-                                    style={{
-                                        height: '250px',
-                                        width: 'auto',
-                                        display: 'block',
-                                        margin: '10px',
-                                    }} /></>)}
+                            {selectedMeal.type === "generated" && (
+                                <>
+                                    <Typography variant="subtitle1">Instructions:</Typography>
+                                    <Typography variant="body2" paragraph>
+                                        {selectedMeal.instructions}
+                                    </Typography>
+                                </>
+                            )}
+                            {selectedMeal.type === "captured" && (
+                                <>
+                                    <Typography variant="subtitle1">Meal photo</Typography>
+                                    <img
+                                        src={selectedMeal.imgURL}
+                                        alt="Uploaded"
+                                        style={{
+                                            height: "250px",
+                                            width: "auto",
+                                            display: "block",
+                                            margin: "10px",
+                                        }}
+                                    />
+                                </>
+                            )}
 
                             <Typography variant="subtitle1">Macronutrients:</Typography>
                             <Typography variant="body2">

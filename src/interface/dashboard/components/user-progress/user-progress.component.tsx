@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 import { useMemo } from 'react';
 import { mealsCosmosService } from '../../../../services/cosmos/meals/meals.service';
 import { userCosmosService } from '../../../../services/cosmos/users/users.service';
-import { fNumber } from '../../../../utils';
+import { fNumber } from '../../../../utils/format-number.util';
 
 interface UserProgressProps {
     selectedDay: string;
@@ -39,10 +39,10 @@ const UserProgress: React.FC<UserProgressProps> = ({selectedDay}) => {
         const fat = (meals || []).filter(m => m.status === 'confirmed').reduce((acc, meal) => acc + meal.macronutrients.fat, 0);
 
         return {
-            calories: fNumber((calories / (macros?.calories || 1)) * 100),
-            protein: fNumber((protein / (macros?.protein || 1)) * 100),
-            carbs: fNumber((carbs / (macros?.carbs || 1)) * 100),
-            fat: fNumber((fat / (macros?.fat || 1)) * 100),
+            calories: (calories / (macros?.calories || 1)) * 100,
+            protein: (protein / (macros?.protein || 1)) * 100,
+            carbs: (carbs / (macros?.carbs || 1)) * 100,
+            fat: (fat / (macros?.fat || 1)) * 100,
             currentCalories:calories,
             currentProtein:protein,
             currentFat:fat,
@@ -85,7 +85,7 @@ const UserProgress: React.FC<UserProgressProps> = ({selectedDay}) => {
                         color="primary"
                     />
                     <Typography variant="caption" color="textSecondary">
-                        {progress.calories}% completed
+                        {fNumber(progress.calories)}% completed
                     </Typography>
                 </Box>
 
@@ -103,7 +103,7 @@ const UserProgress: React.FC<UserProgressProps> = ({selectedDay}) => {
                             color="secondary"
                         />
                         <Typography variant="caption" color="textSecondary" textAlign="center">
-                            {progress.protein}%
+                            {fNumber(progress.protein)}%
                         </Typography>
                     </Grid>
 
@@ -119,7 +119,7 @@ const UserProgress: React.FC<UserProgressProps> = ({selectedDay}) => {
                             color="info"
                         />
                         <Typography variant="caption" color="textSecondary" textAlign="center">
-                            {progress.carbs}%
+                            {fNumber(progress.carbs)}%
                         </Typography>
                     </Grid>
 
@@ -135,7 +135,7 @@ const UserProgress: React.FC<UserProgressProps> = ({selectedDay}) => {
                             color="warning"
                         />
                         <Typography variant="caption" color="textSecondary" textAlign="center">
-                            {progress.fat}%
+                            {fNumber(progress.fat)}%
                         </Typography>
                     </Grid>
                 </Grid>

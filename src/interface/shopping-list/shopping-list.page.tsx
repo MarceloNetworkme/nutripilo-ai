@@ -13,6 +13,7 @@ import {
   CircularProgress,
   Alert,
   Grid,
+  useMediaQuery,
 } from '@mui/material';
 import { mealsCosmosService } from '../../services/cosmos/meals/meals.service';
 import { useParams } from 'react-router-dom';
@@ -22,6 +23,7 @@ const ShoppingList: React.FC = () => {
   const { id: userId } = useParams();
   const { data: mealsData, isFetching } = mealsCosmosService.useGetUserMeals(userId || "");
   const shoppingList = useMemo(() => generateShoppingList(mealsData || []), [mealsData]);
+  const isMobile = useMediaQuery("(max-width:600px)");
 
   if (isFetching) {
     return (
@@ -46,7 +48,7 @@ const ShoppingList: React.FC = () => {
       maxWidth: '1200px',
       width: '100%',
       margin: '0 auto',
-      mt:2
+      mt: isMobile ? 0 : 2
     }}>
       <TableContainer component={Paper}>
         <Table>
